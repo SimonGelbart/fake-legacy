@@ -1,0 +1,61 @@
+version: 1
+
+dn: ou=alpha,ou=Teams,${LDAP_INIT_ORG_DN}
+objectClass: top
+objectClass: organizationalUnit
+objectClass: fakeTeam
+ou: alpha
+displayName: Alpha Operations
+fakeStatus: active
+fakeStartDate: 2020-01-01
+description: Fictional team with two child members
+
+dn: uid=alpha.alice,ou=alpha,ou=Teams,${LDAP_INIT_ORG_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: alpha.alice
+cn: alpha.alice
+employeeNumber: alice
+displayName: Alice Example
+sn: Example
+mail: alice@example.test
+
+dn: uid=alpha.bobby,ou=alpha,ou=Teams,${LDAP_INIT_ORG_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: alpha.bobby
+cn: alpha.bobby
+employeeNumber: bobby
+displayName: Bobby Example
+sn: Example
+mail: bobby@example.test
+
+dn: ou=bravo,ou=Teams,${LDAP_INIT_ORG_DN}
+objectClass: top
+objectClass: organizationalUnit
+objectClass: fakeTeam
+ou: bravo
+displayName: Bravo Support
+fakeStatus: active
+description: Fictional empty team without a start date
+
+dn: ou=future,ou=Teams,${LDAP_INIT_ORG_DN}
+objectClass: top
+objectClass: organizationalUnit
+objectClass: fakeTeam
+ou: future
+displayName: Future Research
+fakeStatus: planned
+fakeStartDate: 2099-01-01
+
+dn: ou=archive,ou=Teams,${LDAP_INIT_ORG_DN}
+objectClass: top
+objectClass: organizationalUnit
+objectClass: fakeTeam
+ou: archive
+displayName: Archived Services
+fakeStatus: archived

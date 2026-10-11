@@ -1,0 +1,23 @@
+name: fake-legacy
+services:
+  ldap:
+    build:
+      context: .
+      dockerfile: ldap/Dockerfile
+    image: fake-legacy-ldap:local
+    environment:
+      LDAP_INIT_ORG_DN: dc=example,dc=test
+      LDAP_INIT_ORG_NAME: Fictional migration fixture
+      LDAP_INIT_ROOT_USER_DN: cn=admin,dc=example,dc=test
+      LDAP_INIT_ROOT_USER_PW: ${FAKE_LDAP_PASSWORD:-FakeLegacyOnly!1}
+      LDAP_INIT_ALLOW_CONFIG_ACCESS: "false"
+      LDAP_TLS_ENABLED: "false"
+      LDAP_BACKUP_TIME: ""
+    ports:
+      - "127.0.0.1:${FAKE_LDAP_PORT:-1389}:389"
+    volumes:
+      - ldap-data:/var/lib/ldap
+      - ldap-config:/etc/ldap/slapd.d
+volumes:
+  ldap-data:
+  ldap-config:

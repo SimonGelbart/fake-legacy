@@ -1,0 +1,7 @@
+# Synthetic example schema. 32473 is the documentation enterprise number.
+dn: cn=fakelegacy,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: fakelegacy
+olcAttributeTypes: ( 1.3.6.1.4.1.32473.20.1 NAME 'fakeStatus' DESC 'Fictional team state' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.32473.20.2 NAME 'fakeStartDate' DESC 'Fictional ISO calendar date' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE )
+olcObjectClasses: ( 1.3.6.1.4.1.32473.20.10 NAME 'fakeTeam' DESC 'Fictional team metadata on an organizationalUnit' SUP top AUXILIARY MUST ( fakeStatus $ displayName ) MAY fakeStartDate )

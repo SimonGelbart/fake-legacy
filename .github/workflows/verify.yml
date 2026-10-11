@@ -1,0 +1,40 @@
+name: Verify fake legacy
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  webforms:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v2
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build Web Forms and behavior checks
+        run: msbuild tests/LegacyRules.Tests/LegacyRules.Tests.csproj /p:Configuration=Release /verbosity:minimal
+      - name: Run behavior checks
+        run: ./tests/LegacyRules.Tests/bin/LegacyRules.Tests.exe
+      - name: Compile ASPX, ASCX and master markup
+        run: '& "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319\aspnet_compiler.exe" -v / -p "$pwd\aspnetapp"'
+      - name: Compile browser scenarios
+        run: dotnet build tests/LegacyWeb.Playwright.Tests
+  ldap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static fixture checks
+        run: python3 scripts/Check-Fixture.py
+      - name: Start LDAP with synthetic data
+        run: docker compose up --build --wait --wait-timeout 120
+      - name: Check directory behavior
+        run: mkdir -p artifacts && bash scripts/Test-Ldap.sh
+      - name: Container logs
+        if: always()
+        run: docker compose logs --no-color
+      - name: Clean up disposable CI directory
+        if: always()
+        run: docker compose down --volumes
