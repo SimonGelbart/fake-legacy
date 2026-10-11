@@ -1,0 +1,15 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="aspnetapp.SiteMaster" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%: Page.Title %> - Fake Legacy</title>
+    <link href="~/Content/Site.css" rel="stylesheet" runat="server" />
+</head>
+<body>
+    <header><a href="/Default.aspx">Fake Legacy</a><nav><a href="/Teams.aspx">Teams</a></nav></header>
+    <main><form id="LegacyForm" runat="server"><asp:ContentPlaceHolder ID="MainContent" runat="server" /></form></main>
+    <footer>Fictional migration fixture · Web Forms with direct LDAP access</footer>
+</body>
+</html>

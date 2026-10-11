@@ -1,0 +1,12 @@
+version: 1
+
+dn: ${LDAP_INIT_ORG_DN}
+objectClass: top
+objectClass: organization
+description: Fictional migration fixture
+${LDAP_INIT_ORG_COMPUTED_ATTRS}
+
+dn: ou=Teams,${LDAP_INIT_ORG_DN}
+objectClass: top
+objectClass: organizationalUnit
+ou: Teams

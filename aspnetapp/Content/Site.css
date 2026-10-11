@@ -1,0 +1,14 @@
+:root { font-family: Segoe UI, sans-serif; color: #202a38; background: #f3f5f7; }
+body { margin: 0; } header, main, footer { padding: 1.4rem; }
+header { display: flex; justify-content: space-between; background: #24384f; }
+header a { color: white; } main { max-width: 1000px; margin: auto; background: white; min-height: 70vh; }
+footer { color: #617084; text-align: center; font-size: .9rem; }
+a { color: #174e89; } label { display: block; margin: .7rem 0 .2rem; }
+input[type=text], textarea, select { box-sizing: border-box; padding: .5rem; width: 320px; max-width: 100%; }
+input[type=submit], button { padding: .5rem 1rem; margin: .7rem .4rem .7rem 0; }
+table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+th, td { padding: .7rem; border-bottom: 1px solid #dce2e8; text-align: left; }
+.error { color: #9f2633; display: block; margin: .7rem 0; }
+.summary { padding: .7rem; border-left: 4px solid #5d7999; background: #edf2f7; margin: 1rem 0; }
+.checks label { display: inline; } .checks { margin: .8rem 0; }
+.help { color: #617084; font-size: .9rem; }
